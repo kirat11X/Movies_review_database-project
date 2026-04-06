@@ -1,43 +1,167 @@
 # Movies Review Database Project
 
-This project is a movie browser with a review backend backed by MongoDB. The frontend lets users browse movies from TMDB, open a dedicated movie page, read reviews from the backend API, post reviews, and delete their own reviews by matching the display name they entered.
+A movie review web app with:
 
-## Run locally
+- a static frontend for browsing movies and opening a dedicated movie page
+- a Node.js / Express backend API for reviews
+- MongoDB for storing user reviews
 
-Frontend:
-- Open `frontend/index.html`
-- Create `frontend/config.local.js` from `frontend/config.local.example.js`
+## Live Links
 
-Backend:
-- Add your MongoDB connection settings in `backend/.env`
-- Start the API from `backend/` with `npm run dev`
+- Frontend: https://movies-review-database-project-fv93.onrender.com/
+- Backend: https://movies-review-database-project.onrender.com/
 
-## Before you publish or deploy
+## Project Structure
 
-These are the main security and repo-hygiene issues that still matter before GitHub, Render, or Vercel:
+- `frontend/`
+  Static frontend files for the movie catalogue and movie detail page.
+- `backend/`
+  Express API for creating, fetching, updating, and deleting movie reviews.
 
-- The review API is not authenticated. Anyone who can reach the backend can post, update, or delete reviews by calling the endpoints directly.
-- Delete and update authorization are not enforced server-side. The frontend hides delete buttons for other users, but the API itself does not verify ownership.
-- CORS is fully open in the backend right now, so any origin can call the review API.
-- There is no rate limiting, abuse protection, or input validation on review routes yet.
-- A pure static frontend cannot truly keep a TMDB key secret. Moving the key out of tracked source helps GitHub hygiene, but for real secrecy you would need a backend or serverless proxy.
-- `backend/node_modules` was committed to git. It should be removed from version control before publishing.
-- `npm audit` currently reports 0 known production dependency vulnerabilities for the backend packages, but that does not fix the application-level issues listed above.
+## Features
 
-## Honest authorship note
+- Browse and search movies using TMDB
+- Open an individual movie page with a larger poster and detailed layout
+- Fetch reviews for a movie from the backend API
+- Post new reviews
+- Delete reviews from the frontend flow
+- Store reviews in MongoDB
 
-What you did:
-- You created the basic movie review project idea and repo.
-- You already had the backend review API, MongoDB setup direction, and the split between frontend and backend.
-- You made the original frontend and backend parts that this work builds on.
+## Tech Stack
 
-What AI did:
-- I built the newer frontend movie-detail experience, including the enlarged movie page, review UI, review fetch/post/delete flow, and the newer styling system.
-- I added frontend configuration helpers and moved the TMDB key out of tracked frontend source into a local config pattern.
-- I added repo ignore rules and this README guidance.
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express
+- Database: MongoDB
+- Deployment: Render
 
-Brutally honest version:
-- This is not a production-secure app yet.
-- The current backend is still the weak point, not the frontend.
-- The new frontend polish and review UX are heavily AI-assisted.
-- If you claim the whole implementation was fully hand-written by you, that would not be accurate.
+## Local Setup
+
+### Backend
+
+1. Go to the backend folder:
+
+```bash
+cd backend
+```
+
+2. Create a local `.env` file.
+
+3. Add:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+PORT=8000
+```
+
+4. Install dependencies and run:
+
+```bash
+npm install
+npm run dev
+```
+
+### Frontend
+
+1. Go to the frontend folder.
+2. Create `config.local.js` from `config.local.example.js`.
+3. Add your values:
+
+```js
+window.__MOVIE_APP_CONFIG__ = {
+    tmdbApiKey: "YOUR_TMDB_API_KEY",
+    backendOrigin: "http://localhost:8000",
+};
+```
+
+4. Open `frontend/index.html` in the browser.
+
+## Render Deployment
+
+### Backend Service
+
+- Root Directory: leave empty or use repo root with commands below
+- Build Command:
+
+```bash
+cd backend && npm install
+```
+
+- Start Command:
+
+```bash
+cd backend && npm start
+```
+
+- Environment Variables:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
+
+### Frontend Static Site
+
+- Root Directory:
+
+```txt
+frontend
+```
+
+- Build Command:
+
+```bash
+printf 'window.__MOVIE_APP_CONFIG__ = {\n  tmdbApiKey: "%s",\n  backendOrigin: "%s"\n};\n' "$TMDB_API_KEY" "$BACKEND_ORIGIN" > config.local.js
+```
+
+- Publish Directory:
+
+```txt
+./
+```
+
+- Environment Variables:
+
+```env
+TMDB_API_KEY=your_tmdb_key
+BACKEND_ORIGIN=https://movies-review-database-project.onrender.com
+```
+
+## What I Built Myself
+
+These are the parts that are reasonably yours to claim:
+
+- The original project idea and repo setup
+- The frontend/backend split for the app
+- The base movie review project direction
+- The MongoDB-backed review API structure already present in the backend
+- The original basic frontend and backend work this version builds on
+
+## What AI Helped With
+
+These are the parts that were significantly AI-assisted:
+
+- The improved frontend structure and UI polish
+- The dedicated `movie.html` detail experience
+- The review section integration on the movie page
+- The frontend logic for fetching reviews, posting reviews, and deleting reviews
+- The frontend config setup for deployment
+- The repo hygiene improvements like ignore rules and README cleanup
+
+## Brutally Honest Authorship Note
+
+- This is not a fully hand-written-from-scratch project by one person anymore.
+- The backend idea and original project direction came from you.
+- The newer frontend experience and deployment cleanup were heavily assisted by AI.
+- If you describe this project publicly, the most accurate statement is:
+  "I built the original movie review project and used AI assistance to improve the frontend, deployment setup, and project polish."
+
+## Security and Deployment Notes
+
+Before calling this production-ready, these issues still matter:
+
+- The backend review API does not have real authentication.
+- Ownership checks for update/delete are not enforced server-side.
+- CORS is open in the backend.
+- There is no rate limiting or abuse protection yet.
+- A static frontend cannot truly hide a TMDB API key from browser users.
+
+`npm audit` currently reports 0 known production dependency vulnerabilities for the backend packages, but that does not solve the application-level issues above.
