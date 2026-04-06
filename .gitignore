@@ -1,0 +1,21 @@
+# Dependencies
+backend/node_modules/
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+frontend/config.local.js
+credentials.txt
+*.pem
+*.key
+
+# Local tool state
+.codex
+.vercel/
+
+# Logs and OS files
+*.log
+.DS_Store

@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Site</title>
 
-    <!-- google fonts -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-
 </head>
 <body>
-    <header>
-    <section class="top">
-    <div class="topnav">
-        <a class="active" href="#"><img id="logo" src="logo.png" alt="Logo"></a>
-        <div class="search-container">
-            <form role="search" id="form">
-                <input id="search-input" type="search" placeholder="Search.." name="search">
-                <button id="submit-button" type="submit" >><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-    </section>
+    <header class="site-header">
+        <section class="top">
+            <div class="topnav">
+                <a class="brand-link" href="index.html" aria-label="Movie Site home">
+                    <img id="logo" src="logo.png" alt="Movie Site logo">
+                    <div class="brand-copy">
+                        <p class="eyebrow">Curated watchlist</p>
+                        <strong>Movie Site</strong>
+                    </div>
+                </a>
+
+                <div class="search-container">
+                    <form role="search" id="form" autocomplete="off">
+                        <label class="visually-hidden" for="search-input">Search movies</label>
+                        <input id="search-input" type="search" placeholder="Search for a movie you want to review" name="search">
+                        <button id="submit-button" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </header>
+
     <main>
         <section class="banner" id="summary">
-            <h1>Welcome to Movie Site</h1>
-            <p>Discover the latest movies and TV shows.</p>
+            <div class="banner-copy">
+                <p class="summary-pill" id="summary-kicker">Now browsing</p>
+                <h1 id="summary-title">Find the next movie worth your time</h1>
+                <p id="summary-text">Open any title to see the expanded movie page, read MongoDB-powered reviews, and post your own take.</p>
+            </div>
         </section>
 
         <section class="filters">
-            <!-- menu options  -->
             <label for="filter">Filter by:</label>
             <select id="filter" name="filter">
                 <option value="popularity">Popularity</option>
@@ -45,30 +52,16 @@
 
             <label for="order">Order:</label>
             <select id="order" name="order">
-                <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
+                <option value="ascending">Ascending</option>
             </select>
         </section>
 
-    <section class="list">
-<!--         
-    <div class="row">
-        <div class="column">
-            <div class="card">
-                <center><img src="https://imgs.search.brave.com/vLTZvz3cI0y2uN6mPGoXAwzd9LVrXVVhihQY7Iqun8Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDE1OTky/ODkwLmpwZw" class="thumbnail"
-                     alt="Movie Thumbnail">
-
-
-                </center>
-                <h3 id="name">Movie Title</h3> -->
-                <!-- more stuff like summary, rating, etc.can be added according to APIS -->
-            <!-- </div>
-        </div>
-    </div> -->
-    </section>
+        <section class="list" aria-live="polite"></section>
     </main>
-    
-    
+
+    <script src="config.local.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

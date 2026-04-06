@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="movie.css">
+</head>
+<body>
+    <header class="movie-header">
+        <a class="back-link" href="index.html">Back to catalogue</a>
+        <div class="movie-header-copy">
+            <p class="eyebrow">Movie detail</p>
+            <h1 id="page-title">Loading movie...</h1>
+        </div>
+    </header>
+
+    <main class="movie-detail">
+        <section class="movie-hero" id="movie-hero">
+            <div class="movie-backdrop" id="movie-backdrop" aria-hidden="true"></div>
+
+            <div class="movie-hero-content">
+                <button class="poster-button" id="poster-button" type="button" aria-label="Enlarge movie poster">
+                    <div class="poster-frame">
+                        <img id="movie-poster" class="movie-poster" alt="">
+                        <div class="movie-poster-fallback" id="movie-poster-fallback">Poster unavailable</div>
+                    </div>
+                    <span class="poster-hint" id="poster-hint">Click to enlarge</span>
+                </button>
+
+                <div class="movie-copy">
+                    <p class="eyebrow" id="movie-kicker">Featured title</p>
+                    <h2 id="movie-title">Loading...</h2>
+                    <p class="movie-tagline" id="movie-tagline">Preparing movie details and review tools...</p>
+                    <div class="movie-facts" id="movie-facts"></div>
+                    <p class="movie-overview" id="movie-overview">Pulling together the full story, cast energy, and review section for this title.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="review-layout">
+            <section class="card-surface review-composer">
+                <div class="section-heading">
+                    <p class="eyebrow">Join the conversation</p>
+                    <h3>Write a review</h3>
+                    <p class="section-copy">Use the same display name to manage your own review from this page later.</p>
+                </div>
+
+                <form id="review-form" class="review-form">
+                    <label class="field-group">
+                        <span>Display name</span>
+                        <input id="review-user" type="text" maxlength="40" placeholder="Your name" required>
+                    </label>
+
+                    <label class="field-group">
+                        <span>Your review</span>
+                        <textarea id="review-text" maxlength="1200" placeholder="What landed for you in this movie?" required></textarea>
+                    </label>
+
+                    <div class="form-footer">
+                        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                        <button id="review-submit" class="primary-button" type="submit">Post review</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card-surface review-feed">
+                <div class="section-heading">
+                    <p class="eyebrow">From your API</p>
+                    <div class="section-heading-row">
+                        <h3>Audience reviews</h3>
+                        <span id="review-count" class="review-count">0 reviews</span>
+                    </div>
+                    <p id="review-intro" class="section-copy">MongoDB reviews for this movie will appear here as soon as the API responds.</p>
+                </div>
+
+                <div id="reviews-state" class="reviews-state">Loading reviews from the backend...</div>
+                <div id="reviews-list" class="reviews-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <div class="poster-modal" id="poster-modal" hidden>
+        <button class="poster-modal-backdrop" id="poster-modal-backdrop" type="button" aria-label="Close enlarged poster"></button>
+        <div class="poster-modal-panel" role="dialog" aria-modal="true" aria-labelledby="poster-modal-title">
+            <div class="poster-modal-header">
+                <h3 id="poster-modal-title">Poster preview</h3>
+                <button class="modal-close-button" id="modal-close-button" type="button">Close</button>
+            </div>
+            <img id="poster-modal-image" class="poster-modal-image" alt="">
+        </div>
+    </div>
+
+    <script src="config.local.js"></script>
+    <script src="config.js"></script>
+    <script src="movie.js"></script>
+</body>
+</html>
