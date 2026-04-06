@@ -149,9 +149,9 @@ These are the parts that were significantly AI-assisted:
 ## Brutally Honest Authorship Note
 
 - This is not a fully hand-written-from-scratch project by one person anymore.
-- The backend idea and original project direction came from you.
+- The backend idea and original project direction came from me.
 - The newer frontend experience and deployment cleanup were heavily assisted by AI.
-- If you describe this project publicly, the most accurate statement is:
+- If i describe this project publicly, the most accurate statement is:
   "I built the original movie review project and used AI assistance to improve the frontend, deployment setup, and project polish."
 
 ## Security and Deployment Notes
